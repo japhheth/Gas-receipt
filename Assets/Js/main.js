@@ -10,18 +10,21 @@ let todayDate = document.getElementById('today');
 let res = '';
 
 
-//Get todays date begin
+//Get today's date begin
+
 var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 let purchasedDate = new Date();
 let purchasedDateOutput = purchasedDate.toLocaleDateString("en-US",options);
 console.log(purchasedDate.toLocaleDateString("en-US",options));
 
-//Get todays date End
+//Get today's date End
 
 todayDate.innerHTML = purchasedDateOutput;
 
+// Print receipt 
+
 btn.addEventListener('click', function(e) {
-    if(kgInputed.value == ''){
+    if(kgInputed.value == '' || kgInputed.value == 0){
         error.innerHTML = 'Please enter the amount of Kg purchased';
         setTimeout(function(){
             init();
@@ -47,9 +50,13 @@ btn.addEventListener('click', function(e) {
     }
 });
 
+//Clear Error
+
 function clearError(){
     error.innerHTML = '';
 }
+//Calculate kg purchased
+
 function calculateKgPurchased(){
     let perKg = 300;
     res = kgInputed.value * perKg;
@@ -71,6 +78,8 @@ function formatMoney(number, decPlaces, decSep, thouSep) {
         i.substr(j).replace(/(\decSep{3})(?=\decSep)/g, "$1" + thouSep) +
         (decPlaces ? decSep + Math.abs(number - i).toFixed(decPlaces).slice(2) : "");
  }
+
+ //Clear data and re-initialize
 
  function init(){
      totalAmount.innerHTML = '';
