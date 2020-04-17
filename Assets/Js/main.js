@@ -23,7 +23,8 @@ todayDate.innerHTML = purchasedDateOutput;
 
 // Print receipt 
 
-btn.addEventListener('click', function(e) {
+btn.addEventListener('click', function() {
+
     if(kgInputed.value == '' || kgInputed.value == 0){
         error.innerHTML = 'Please enter the amount of Kg purchased';
         setTimeout(function(){
@@ -45,10 +46,38 @@ btn.addEventListener('click', function(e) {
         window.print();
         setTimeout( function(){
             init();
-        }, 4000)
-    
+        }, 4000)   
+        postData(e);
     }
 });
+
+
+
+//Post data()
+function postData(e){
+    e.preventDefault();
+    fetch('url', {
+        method : 'POST',
+        headers : {
+            'Accept' : 'application/json, text/plain, */*',
+            'Content-type' : 'application/json'
+        },
+        body : JSON.stringify({
+            day : purchasedDateOutput,
+            gasKg : kgInputed.value,
+            amount : res
+        })    
+    })
+    .then( function(res){
+        return res.json()
+    })
+    .then(function(data){
+        console.log(data)
+    })
+    .catch(function(error){
+        return error
+    })
+}
 
 //Clear Error
 
@@ -59,8 +88,11 @@ function clearError(){
 
 function calculateKgPurchased(){
     let perKg = 300;
-    res = kgInputed.value * perKg;
-    totalAmount.innerHTML = '<span>&#8358;</span>' + formatMoney(res);
+    res = formatMoney(kgInputed.value * perKg);
+    totalAmount.innerHTML = '<span>&#8358;</span>' + res;
+    //PostData
+
+  
 }
 
 //Amount formatter
@@ -79,7 +111,7 @@ function formatMoney(number, decPlaces, decSep, thouSep) {
         (decPlaces ? decSep + Math.abs(number - i).toFixed(decPlaces).slice(2) : "");
  }
 
- //Clear data and re-initialize
+ //Re-initialization
 
  function init(){
      totalAmount.innerHTML = '';
