@@ -23,7 +23,7 @@ btn.addEventListener('click', (e)=> {
 let calculateKgPurchased = function(){
     let perKg = 300;
     res = kgInputed.value * perKg;
-    totalAmount.innerHTML = '#' + formatMoney(res);
+    totalAmount.innerHTML = '<span>&#8358;</span>' + formatMoney(res);
 }
 
 //Amount formatter
