@@ -8,7 +8,7 @@ let totalAmount = document.getElementById('total-amount');
 let res = '';
 
 
-btn.addEventListener('click', (e)=> {
+btn.addEventListener('click', function(e) {
     if(kgInputed.value == ''){
         error.innerHTML = 'Enter the total amount of Kg';
         e.preventDefault();
