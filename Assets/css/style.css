@@ -7,6 +7,9 @@
     border-radius: 10px;
    
 }
+.outputAmt{
+    text-align: right;
+}
 #error-text{
     color: #f00;
     text-align: right;
@@ -27,8 +30,6 @@
     outline: none;
     border: none;
     text-align: right;
-    display: block;
-    /* border-bottom: 1px solid #000; */
 }
 
 button{
