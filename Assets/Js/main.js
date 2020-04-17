@@ -14,6 +14,7 @@ btn.addEventListener('click', (e)=> {
         e.preventDefault();
     }else{
         calculateKgPurchased();
+        btn.style.display = 'none';
         window.print();
     }
 });
