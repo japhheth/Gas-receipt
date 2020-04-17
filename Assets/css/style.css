@@ -1,0 +1,22 @@
+
+.wrapper{
+    margin-top: 130px;
+}
+
+
+#error-text{
+    color: #f00;
+}
+
+.kg-div > input{
+    padding: 5px;
+    outline: none;
+    border: none;
+  
+    /* border-bottom: 1px solid #000; */
+}
+
+button{
+    padding: 8px 50px !important;
+    outline: none !important;
+}
