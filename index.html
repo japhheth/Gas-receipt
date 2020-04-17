@@ -10,33 +10,39 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <div class="row wrapper">
-            <div class="col-md-6">
-                <p>Enter total number of Kg</p>
+    <div class="container-fluid">
+        <div class="main-wrapper">
+            <p id="today"></p>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <p>Enter total number of Kg Purchased</p>
+                </div>
+                <div class="col-md-6 kg-div flex-div">
+                    <input type="tel" id="kg-purchased" placeholder="Kg Purchased">
+                    <p id="error-text"></p>
+                </div>  
+            
             </div>
-            <div class="col-md-6 kg-div">
-                <input type="tel" id="kg-purchased" placeholder="Kg Purchased">
-                <p id="error-text"></p>
-            </div>  
-        
+            <div class="row total-amt mt-5">
+                <div class="col-md-6">
+                    <h4>TOTAL</h4>
+                </div>
+                <div class="col-md-6 flex-div">
+                    <P id="total-amount"></P>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <button class="btn btn-primary" id="tran-history">Get Transaction History</button>
+                </div>
+                <div class="col-md-6 btn-area flex-div">
+                    <button class="btn btn-primary" id="print-div">Print</button>
+                </div>
+            </div>    
         </div>
-        <div class="row total-amt mt-5">
-            <div class="col-md-6">
-                <h4>TOTAL</h4>
-            </div>
-            <div class="col-md-6">
-                <P id="total-amount"></P>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-6"></div>
-            <div class="col-md-6 btn-area">
-                <button class="btn btn-primary" id="print-div">Print</button>
-            </div>
-        </div>   
     </div>
-    
+
+
     <script src="Assets/Js/jquery.min.js"></script>
     <script src="Assets/Js/main.js"></script>
 </body>

@@ -5,8 +5,20 @@ let error = document.getElementById('error-text');
 let wrapperDiv = document.getElementById('value-entered');
 let outputDiv = document.getElementById('total');
 let totalAmount = document.getElementById('total-amount');
+let history = document.getElementById('tran-history');
+let todayDate = document.getElementById('today');
 let res = '';
 
+
+//Get todays date begin
+var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+let purchasedDate = new Date();
+let purchasedDateOutput = purchasedDate.toLocaleDateString("en-US",options);
+console.log(purchasedDate.toLocaleDateString("en-US",options));
+
+//Get todays date End
+
+todayDate.innerHTML = purchasedDateOutput;
 
 btn.addEventListener('click', function(e) {
     if(kgInputed.value == ''){
@@ -15,7 +27,12 @@ btn.addEventListener('click', function(e) {
     }else{
         calculateKgPurchased();
         btn.style.display = 'none';
+        history.style.display = 'none';
         window.print();
+        setTimeout( function(){
+            init();
+        }, 5000)
+    
     }
 });
 
@@ -40,4 +57,12 @@ function formatMoney(number, decPlaces, decSep, thouSep) {
         (j ? i.substr(0, j) + thouSep : "") +
         i.substr(j).replace(/(\decSep{3})(?=\decSep)/g, "$1" + thouSep) +
         (decPlaces ? decSep + Math.abs(number - i).toFixed(decPlaces).slice(2) : "");
-    }
+ }
+
+ function init(){
+     totalAmount.innerHTML = '';
+     kgInputed.value = '';
+     btn.style.display = 'block';
+     history.style.display = 'block';
+
+ }

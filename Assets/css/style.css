@@ -1,17 +1,25 @@
 
-.wrapper{
-    margin-top: 130px;
+.main-wrapper{
+    width: 800px;
+    margin: 130px auto 0;
+    border: 2px solid gray;
+    padding: 60px 30px;
+    border-radius: 10px;
+   
 }
-
-
 #error-text{
     color: #f00;
+}
+.flex-div{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .kg-div > input{
     padding: 5px;
     outline: none;
     border: none;
+    text-align: right;
   
     /* border-bottom: 1px solid #000; */
 }
