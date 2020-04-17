@@ -24,12 +24,14 @@ btn.addEventListener('click', function(e) {
     if(kgInputed.value == ''){
         error.innerHTML = 'Enter the total amount of Kg';
         setTimeout(function(){
+            init();
             clearError();
         }, 3000)
         e.preventDefault();
     }else if (isNaN(kgInputed.value)){
         error.innerHTML = 'Value Must be a number';
         setTimeout(function(){
+            init();
             clearError();
         }, 3000)
         e.preventDefault();
