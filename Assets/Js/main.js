@@ -23,21 +23,32 @@ todayDate.innerHTML = purchasedDateOutput;
 btn.addEventListener('click', function(e) {
     if(kgInputed.value == ''){
         error.innerHTML = 'Enter the total amount of Kg';
+        setTimeout(function(){
+            clearError();
+        }, 3000)
         e.preventDefault();
-    }else{
+    }else if (isNaN(kgInputed.value)){
+        error.innerHTML = 'Value Must be a number';
+        setTimeout(function(){
+            clearError();
+        }, 3000)
+        e.preventDefault();
+    } else{
         calculateKgPurchased();
         btn.style.display = 'none';
         history.style.display = 'none';
         window.print();
         setTimeout( function(){
             init();
-        }, 5000)
+        }, 4000)
     
     }
 });
 
-
-let calculateKgPurchased = function(){
+function clearError(){
+    error.innerHTML = '';
+}
+function calculateKgPurchased(){
     let perKg = 300;
     res = kgInputed.value * perKg;
     totalAmount.innerHTML = '<span>&#8358;</span>' + formatMoney(res);

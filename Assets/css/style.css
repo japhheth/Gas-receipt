@@ -9,18 +9,25 @@
 }
 #error-text{
     color: #f00;
+    text-align: right;
 }
 .flex-div{
     display: flex;
     justify-content: flex-end;
+    flex-direction: column;
 }
 
-.kg-div > input{
+.flex-div1{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.input-box{
     padding: 5px;
     outline: none;
     border: none;
     text-align: right;
-  
+    display: block;
     /* border-bottom: 1px solid #000; */
 }
 
