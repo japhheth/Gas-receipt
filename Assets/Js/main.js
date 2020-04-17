@@ -22,7 +22,7 @@ todayDate.innerHTML = purchasedDateOutput;
 
 btn.addEventListener('click', function(e) {
     if(kgInputed.value == ''){
-        error.innerHTML = 'Enter the total amount of Kg';
+        error.innerHTML = 'Please enter the amount of Kg purchased';
         setTimeout(function(){
             init();
             clearError();
