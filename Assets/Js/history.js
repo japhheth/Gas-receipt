@@ -24,7 +24,7 @@ function formatMoney(number, decPlaces, decSep, thouSep) {
 //Fetch Data
 function getOldTransactions(){
     try{
-        fetch('https://stationwork-api.herokuapp.com/api/transaction')
+        fetch('https://crossorigin.me/https://stationwork-api.herokuapp.com/api/transaction')
         .then(function(res){
             return res.json();
         })
