@@ -7,7 +7,9 @@ let outputDiv = document.getElementById('total');
 let totalAmount = document.getElementById('total-amount');
 let history = document.getElementById('tran-history');
 let todayDate = document.getElementById('today');
-let res = '';
+let res;
+let formattedAmt;
+
 
 
 //Get today's date begin
@@ -19,7 +21,6 @@ console.log(purchasedDate.toLocaleDateString("en-US",options));
 
 //Get today's date End
 
-todayDate.innerHTML = purchasedDateOutput;
 
 // Print receipt 
 
@@ -31,14 +32,12 @@ btn.addEventListener('click', function() {
             init();
             clearError();
         }, 3000)
-        e.preventDefault();
     }else if (isNaN(kgInputed.value)){
         error.innerHTML = 'Value Must be a number';
         setTimeout(function(){
             init();
             clearError();
         }, 3000)
-        e.preventDefault();
     } else{
         calculateKgPurchased();
         btn.style.display = 'none';
@@ -47,53 +46,30 @@ btn.addEventListener('click', function() {
         setTimeout( function(){
             init();
         }, 4000)   
-        postData(e);
+         postData();
     }
 });
 
 
 
-//Post data()
-function postData(e){
-    e.preventDefault();
-    fetch('url', {
-        method : 'POST',
-        headers : {
-            'Accept' : 'application/json, text/plain, */*',
-            'Content-type' : 'application/json'
-        },
-        body : JSON.stringify({
-            day : purchasedDateOutput,
-            gasKg : kgInputed.value,
-            amount : res
-        })    
-    })
-    .then( function(res){
-        return res.json()
-    })
-    .then(function(data){
-        console.log(data)
-    })
-    .catch(function(error){
-        return error
-    })
-}
 
 //Clear Error
-
 function clearError(){
     error.innerHTML = '';
 }
-//Calculate kg purchased
 
+//Calculate kg purchased
 function calculateKgPurchased(){
     let perKg = 300;
-    res = formatMoney(kgInputed.value * perKg);
-    totalAmount.innerHTML = '<span>&#8358;</span>' + res;
+
+    res = kgInputed.value * perKg;
+    formattedAmt = formatMoney(res)
+    totalAmount.innerHTML = '<span>&#8358;</span>' + formattedAmt;
     //PostData
 
   
 }
+
 
 //Amount formatter
 
@@ -114,9 +90,42 @@ function formatMoney(number, decPlaces, decSep, thouSep) {
  //Re-initialization
 
  function init(){
+     todayDate.innerHTML = purchasedDateOutput;
      totalAmount.innerHTML = '';
      kgInputed.value = '';
      btn.style.display = 'block';
      history.style.display = 'block';
 
  }
+
+//Post data()
+ function postData(){
+    try{
+        fetch('https://stationwork-api.herokuapp.com/api/transaction', {
+            method : 'POST',
+            headers : {
+                'Accept' : 'application/json, text/plain, */*',
+                'Content-type' : 'application/json'
+            },
+            body : JSON.stringify({quantity : kgInputed.value, amount : res})    
+        })
+        .then( function(dt){
+            return dt.json()
+        })
+        .then(function(data){
+            console.log(data)
+        })
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+
+
+ 
+
+  
+
+
+
