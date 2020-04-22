@@ -101,7 +101,7 @@ function formatMoney(number, decPlaces, decSep, thouSep) {
 //Post data()
  function postData(){
     try{
-        fetch('https://crossorigin.me/https://stationwork-api.herokuapp.com/api/transaction', {
+        fetch('https://stationwork-api.herokuapp.com/api/transaction', {
             method : 'POST',
             headers : {
                 'Accept' : 'application/json, text/plain, */*',
