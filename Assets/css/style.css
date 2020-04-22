@@ -10,21 +10,11 @@
 .outputAmt{
     text-align: right;
 }
-.submit-btn{
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-    padding: 8px 50px !important;
-    outline: none !important;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    cursor: pointer;
-    border-radius: 3px;
+.link{
+    display: flex;
+    justify-content: flex-end;
 }
-.submit-btn:hover{
-    color: #fff;
-    background-color: #0069d9;
-    border-color: #0062cc;
-}
+
 #error-text{
     color: #f00;
     text-align: right;
