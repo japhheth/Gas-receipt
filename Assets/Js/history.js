@@ -1,3 +1,6 @@
+"use strict";
+
+
 let outputTable = document.getElementById('tableBody');
 var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 let tableBody = '';
@@ -51,4 +54,4 @@ function getOldTransactions(){
 
  $(document).ready(function() {
     $('#outputTable').DataTable();
-} );
+});

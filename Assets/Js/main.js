@@ -1,3 +1,4 @@
+"use strict";
 
 let btn = document.getElementById('print-div');
 let kgInputed = document.getElementById('kg-purchased');

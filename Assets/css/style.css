@@ -14,7 +14,9 @@
     display: flex;
     justify-content: flex-end;
 }
-
+.head-bg{
+    background-color: #28394B;
+}
 #error-text{
     color: #f00;
     text-align: right;
